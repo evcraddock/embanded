@@ -1,0 +1,39 @@
+	<form name="bandForm" ng-submit="saveBand(bandForm.$valid, data)">
+	  <div class="row">
+	      <div class="col-md-6 form-group">
+	        <label for="bandName">Band</label>
+	        <span ng-if="bandForm.bandName.$invalid">*</span>
+	        <input type="text" name="bandName" id="bandName" class="form-control" ng-model="currentBand.name" placeholder="Enter Band Name" required/>
+	        
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-6 form-group">
+	        <label for="website">Website</label>
+	        <span ng-if="bandForm.website.$invalid">*</span>
+	        <input type="url" id="website" name="website" class="form-control" ng-model="currentBand.website" placeholder="Enter Website Url"/>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-6 form-group">
+	        <label for="description">About</label>
+	        <textarea id="description" class="form-control" ng-model="currentBand.description" rows="3" placeholder="About the Band"></textarea>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-6 form-group">
+	        <label for="active">Active</label>
+	        <input type="checkbox" id="active" ng-model="currentBand.active" ></input>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-2 form-group">
+	        <input type="submit" class="btn btn-default" value="Save" />
+	        <input type="button" ng-click="cancelSave()" class="btn btn-link" value="Cancel" />
+	      </div>
+	  	</div>
+
+  	    <div ng-show="isSaved" class="alert alert-info">
+  	      	Successfully Saved the Band
+        </div>
+	</form>

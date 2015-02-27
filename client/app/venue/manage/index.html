@@ -1,0 +1,36 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	
+   	<div class="panel panel-default">
+   		<div class="panel-heading">
+   			<h2> {{currentVenue.name}}</h2>		
+   		</div>
+   		<div class="panel-body">
+	   		<div class="row" ng-if="isViewMode">
+	   			<div class="col-md-3">
+	   				<div class="well well-sm">
+	   				   	<address>
+	   				   		<strong>{{currentVenue.name}}</strong><br/>
+	   						{{currentVenue.address.streetAddress}} <br/>
+	   						{{currentVenue.address.location}} {{currentVenue.address.zipCode}} <br/>
+	   						<span ng-if="currentVenue.phoneNumber"><abbr title="Phone Number">Phone:</abbr> {{currentVenue.formatedPhoneNumber}} <br/></span>
+	   						<span ng-if="currentVenue.website"><abbr title="Website">Web:</abbr> <a ng-show="currentVenue.website" target="_new" href="{{currentVenue.website}}">{{currentVenue.website}}</a></span>
+	   				   	</address>
+
+   				   		<a ng-show="isAdmin" href="javascript:void(0);" ng-click="switchMode();" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+	   				   	<a ng-show="isAdmin" ng-click="deleteVenue(currentVenue.name, currentVenue._id)" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+   					</div>
+		   		</div>
+		   		<div class="col-md-9">
+		   			<div ng-include="'app/show/search/venues.html'"></div>
+		   		</div>
+	   		</div>
+	   		<div class="row" ng-if="isEditMode">
+	   			<div class="col-md-12">
+	   				<div ng-include="'app/venue/manage/edit.html'"></div>
+	   			</div>
+	   		</div>
+   		</div>
+    </div>
+</div>

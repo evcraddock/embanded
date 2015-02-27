@@ -1,0 +1,49 @@
+
+  <form name="showForm" ng-submit="saveShow(showForm.$valid)">
+    <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="name">Show Name (optional)</label>
+          <input type="text" class="form-control" ng-model="currentShow.name" />
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="bandName">Band</label>
+          <input type="text" class="form-control" ng-model="currentShow.band" 
+                 typeahead="band as band.name for band in getBands($viewValue)" 
+                 />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="venuName">Venue</label>
+          <input type="text" class="form-control" ng-model="currentShow.venue" typeahead="venue as venue.name for venue in getVenues($viewValue)" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 form-group">
+          <label for="showDate">Show Date</label><br/>
+          <em>{{currentShow.showDate | date:'fullDate' }} {{currentShow.showDate | date:'shortTime' }}</em>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="display:inline-block; min-height:290px;">
+            <datepicker ng-model="currentShow.showDate" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+
+            <label for="showTime">Show Time</label>
+            <timepicker id="showTime" ng-model="currentShow.showDate" hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 form-group">
+          <input type="submit" class="btn btn-default" value="Save" />
+          <input type="button" ng-click="cancelSave()" class="btn btn-link" value="Cancel" />
+        </div>
+      </div>
+
+      <div ng-show="isSaved" class="alert alert-info">
+          Successfully Saved the Show
+      </div>
+  </form>

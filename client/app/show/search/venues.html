@@ -1,0 +1,31 @@
+
+   
+<div class="row" ng-controller="ShowSearchCtrl">
+  <div class="col-md-12">
+    <h3>Upcoming Shows:</h3>
+    <table ng-if="foundShows.length > 0" class="table table-striped table-condensed table-responsive">
+      <tbody>
+        <tr ng-repeat="show in foundShows">
+          <td>
+            <a ng-href="/shows/{{show._id}}">{{show.venueShowName}}</a> 
+          </td>
+          <td><a href="/bands/{{show.band}}">{{show.bandName}}</a></td>
+          <td>{{show.showDate | date:'MM-dd-yyyy'}}</td>
+          <td>
+          <!-- <a ng-href="/shows/{{show._id}}" class="btn btn-default btn-sm"><i class="fa fa-asterisk"></i> Details</a>  -->
+          <!-- <a href="javascript:void(0);" ng-click="deleteShow(show.venueShowName, show._id)" class="btn btn-default"><i class="fa fa-trash"></i> Delete</a> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr/>
+    <div ng-if="foundShows.length == 0" class="alert alert-info">No Upcoming Shows</div>
+  </div>
+</div>
+<div class="row" ng-if="isAdmin">
+  <div class="col-md-12">
+    <a ng-href="/venues/{{venueId}}/shows/add" class="btn btn-default">
+      <i class="glyphicon glyphicon-plus"></i> Add Show
+    </a>
+  </div>
+</div>

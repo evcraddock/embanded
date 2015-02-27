@@ -1,0 +1,20 @@
+
+	   		
+		<div class="well well-sm">
+		   	<address>
+		   		<h3>{{currentShow.bandName}}</h3>
+		   		<!-- <h3 ng-if="currentShow.name">{{currentShow.name}}</h3> -->
+		   		<h4><em>{{currentShow.showDate | date:'fullDate' }}<br/>
+		   		at {{currentShow.showDate | date:'shortTime' }}</em></h4>
+		   		
+		   		{{currentShow.venueName}} <br/>
+				{{currentShow.venue.address.streetAddress}} <br/>
+				{{currentShow.venue.address.location}} {{currentShow.venue.address.zipCode}} <br/>
+				<span ng-if="currentShow.venue.phoneNumber"><abbr title="Phone Number">Phone:</abbr> {{currentShow.venue.formatedPhoneNumber}} <br/></span>
+				<span ng-if="currentShow.venue.website"><abbr title="Website">Web:</abbr> <a ng-show="currentShow.venue.website" target="_new" href="{{currentShow.venue.website}}">{{currentShow.venue.website}}</a></span>
+		   	</address>
+
+		   	<a ng-show="isAdmin" href="javascript:void(0);" ng-click="switchMode();" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+		   	<a ng-show="isAdmin" ng-click="deleteShow(currentShow.name, currentShow._id)" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+		</div>
+		   		

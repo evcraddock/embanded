@@ -1,0 +1,61 @@
+	<form name="venueForm" ng-submit="saveVenue(venueForm.$valid)">
+	  <div class="row">
+	      <div class="col-md-6 form-group">
+	        <label for="venueName">Venue</label>
+	        <span ng-if="venueForm.venueName.$invalid">*</span>
+	        <input type="text" name="venueName" id="venueName" class="form-control" ng-model="currentVenue.name" placeholder="Enter Venue Name" required/>
+	        
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-9 form-group">
+	        <label for="streetAddress">Street Address</label>
+	        <span ng-if="venueForm.streetAddress.$invalid">*</span>
+	        <input type="text" id="streetAddress" name="streetAddress" class="form-control" ng-model="currentVenue.address.streetAddress" placeholder="Enter an address"  required />
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-3 form-group">
+	        <label for="city">City</label>
+	        <span ng-if="venueForm.city.$invalid">*</span>
+	        <input type="text" id="city" name="city" class="form-control" ng-model="currentVenue.address.city" placeholder="Enter a City" required/>
+	      </div>
+	    
+	      <div class="col-md-3 form-group">
+	        <label for="state">State</label>
+	        <span ng-if="venueForm.state.$invalid">*</span>
+	        <select-usstates ng-model="currentVenue.address.state" name="state" required></select-usstates>
+	      </div>
+	    
+	      <div class="col-md-3 form-group">
+	        <label for="zipCode">Zip Code</label>
+	        <span ng-if="venueForm.zipCode.$invalid">*</span>
+	        <input type="text" id="zipCode" name="zipCode" class="form-control" ng-model="currentVenue.address.zipCode" placeholder="Enter a Zip Code" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required/>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-6 form-group">
+	        <label for="website">Website</label>
+	        <span ng-if="venueForm.website.$invalid">*</span>
+	        <input type="url" id="website" name="website" class="form-control" ng-model="currentVenue.website" placeholder="Enter a Website"/>
+
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-6 form-group">
+	        <label for="phoneNumber">Phone Number</label>
+	        <span ng-if="venueForm.phoneNumber.$invalid">*</span>
+	        <input type="text" class="form-control" name="phoneNumber" placeholder="Enter a Phone Number" ng-model="currentVenue.formatedPhoneNumber"></input>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-2 form-group">
+	        <input type="submit" class="btn btn-primary" value="Save" />
+	        <input type="button" ng-click="cancelSave()" class="btn btn-link" value="Cancel" />
+	      </div>
+	  	</div>
+
+  	    <div ng-show="isSaved" class="alert alert-info">
+  	      	Successfully Saved the Venue
+        </div>
+	</form>

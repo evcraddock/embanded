@@ -1,0 +1,77 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="panel panel-default">
+   		<div class="panel-heading">
+   			<h2> {{currentBand.name}}</h2>		
+   		</div>
+   		<div class="panel-body">
+	   		<div class="row" ng-if="isViewMode">
+	   			<div class="col-md-3">
+	   				<div class="well well-sm">
+	   				   	<address>
+	   				   		{{currentBand.name}}</br>
+	   				   		<span ng-if="currentBand.website"><abbr title="Website"> Web: </abbr><a ng-show="currentBand.website" target="_new" href="{{currentBand.website}}">{{currentBand.website}}</a></span><br/>
+   				   			<label for="active">Active</label>
+   				   			<input type="checkbox" ng-model="currentBand.active"/>
+	   				   	</address>
+
+	   				   	<address>
+   				   			<pre>{{currentBand.description}}</pre>
+	   				   	</address>
+
+   				   		<a ng-show="isAdmin" href="javascript:void(0);" ng-click="switchMode();" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+	   				   	<a ng-show="isAdmin" ng-click="deleteBand(currentBand.name, currentBand._id)" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+   				   	</div>
+   				   
+			   	</div>
+			   	<div class="col-md-9">
+		   			<div ng-include="'app/show/search/bands.html'"></div>
+		   		</div>
+		   	</div>
+		   	<div class="row" ng-if="isEditMode">
+	   			<div class="col-md-12">
+	   				<div ng-include="'app/band/manage/edit.html'"></div>
+	   			</div>
+	   		</div>
+	   	</div>
+   	</div>
+
+
+	<!-- <tabset vertical="false" type="pills">
+		<tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+	      {{tab.content}}
+
+	    </tab>
+		<tab ng-click="switchTabs(0)">
+			<tab-heading>
+	        	<i class="glyphicon glyphicon-asterisk"></i> 
+	        	Overview 
+	      	</tab-heading>
+			<div ng-include="'app/band/manage/view.html'"></div>
+		</tab>
+		<tab ng-click="switchTabs(1)">
+			<tab-heading>
+	        	<i class="glyphicon glyphicon-edit"></i> 
+	        	Details
+	      	</tab-heading>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div ng-include="'app/band/manage/edit.html'"></div>
+				</div>
+			</div>
+		</tab>
+		<tab ng-click="switchTabs(2)">
+			<tab-heading>
+	        	<i class="glyphicon glyphicon-star-empty"></i> 
+	        	Shows
+	      	</tab-heading>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div ng-include="'app/show/search/bands.html'"></div>
+				</div>
+			</div>
+		</tab>
+	</tabset> -->
+
+</div>

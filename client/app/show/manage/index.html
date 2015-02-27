@@ -1,0 +1,23 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+		<div class="panel panel-default">
+   		<div class="panel-heading">
+   			<h2> {{currentShow.name}}</h2>
+   		</div>
+   		<div class="panel-body">
+   			<div class="row" ng-if="isViewMode">
+   				<div class="col-md-3">
+					<div ng-include="'app/show/manage/view.html'"></div>
+				</div>
+			</div>
+			<div class="row" ng-if="isEditMode">
+				<div class="col-md-12">
+					<div ng-include="'app/show/manage/edit.html'"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,53 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h2>Find Band</h2>
+	    <form ng-submit="findBands()">
+	    	<div class="row">
+	    		<div class="col-md-6 form-group">
+	    			<p class="input-group">
+	    			  <input type="text" id="searchTerm" class="form-control" ng-model="searchTerm" placeholder="Enter Band Name"/>
+	    			  <span class="input-group-btn">
+	    			    <input type="submit" class="btn btn-primary" type="button" value="Search" />
+	    			  </span>
+	    			</p>
+	    		</div>
+	    	</div>
+	    </form>
+	  </div>
+	  <div class="panel-body">
+
+	    <div class="row">
+	      <div class="col-md-12">
+	      	<div ng-if="foundBands.length == 0" class="alert alert-danger">No bands were found</div>
+	        <table  ng-if="foundBands.length > 0" class="table table-striped table-condensed table-bordered">
+	          <thead>
+	            <tr>
+	              <th>Band</th>
+	              <th>Website</th>
+	              <th></th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	            <tr ng-repeat="band in foundBands">
+	              <td><a href="/bands/{{band._id}}">{{band.name}}</a></td>
+	              <td><a ng-show="band.website" target="_new" href="{{band.website}}">{{band.website}}</a></td>
+	              <td>
+	              	
+	              </td>
+	            </tr>
+	          </tbody>
+	        </table>
+	      </div>
+	    </div>
+	    <div class="row">
+	    	<hr/>
+	    	<div class="col-lg-1" ng-if="isAdmin">
+	    		<a ng-href="/bands/add" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add New Band</a>
+	    	</div>
+	    </div>
+	  </div>
+	</div>
+</div>
