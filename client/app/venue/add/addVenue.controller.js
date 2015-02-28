@@ -7,11 +7,11 @@ angular.module('embandedApp')
     $scope.isSaved = false;
 
     $scope.saveVenue = function(isValid) {
-      if (!isValid) return;
+      if (!isValid) {
+        return;
+      }
 
-      var venuePhoneNumber = ($scope.currentVenue.formatedPhoneNumber != undefined)
-        ? $scope.currentVenue.formatedPhoneNumber.replace(/\D+/g, '')
-        : '';
+      var venuePhoneNumber = ($scope.currentVenue.formatedPhoneNumber !== undefined) ? $scope.currentVenue.formatedPhoneNumber.replace(/\D+/g, '') : '';
 
       VenueSvc.add({ 
         name:     $scope.currentVenue.name,
@@ -34,5 +34,5 @@ angular.module('embandedApp')
 
     $scope.cancelSave = function() {
       $location.path('/venues').replace().notify(false);
-    }
+    };
   });

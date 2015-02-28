@@ -4,16 +4,14 @@ angular.module('embandedApp')
   .controller('AddShowCtrl', function ($scope, $stateParams, $location, $filter, socket, ShowSvc, VenueSvc, BandSvc) {
 
     $scope.bandId = $stateParams.bandId;
-    $scope.hasCurrentBand = $stateParams.bandId != undefined;
+    $scope.hasCurrentBand = $stateParams.bandId !== undefined;
     $scope.venueId = $stateParams.venueId;
-    $scope.hasCurrentVenue = $stateParams.venueId != undefined;
+    $scope.hasCurrentVenue = $stateParams.venueId !== undefined;
 
-    $scope.foundVenues = []
-    $scope.foundBands = []
+    $scope.foundVenues = [];
+    $scope.foundBands = [];
   	$scope.currentShow = {};
 
-    // $scope.selectedVenue = undefined;
-    // $scope.selectedBand = undefined;
     $scope.isSaved = false;
 
     if ($scope.hasCurrentBand) {
@@ -29,7 +27,9 @@ angular.module('embandedApp')
     }
 
     $scope.saveShow = function(isValid) {
-      if (!isValid) return;
+      if (!isValid) {
+        return;
+      }
 
       ShowSvc.add({ 
         name: $scope.currentShow.name,
@@ -55,16 +55,15 @@ angular.module('embandedApp')
 
     $scope.cancelSave = function() {
       $location.path('/shows').replace().notify(false);
-    }
+    };
 
     $scope.getVenues = function(searchTerm) {
-      // var foundVenues = []
       VenueSvc.queryAll({ name: searchTerm }, function(results){
           $scope.foundVenues = results;
       });
 
       return $scope.foundVenues;
-    }
+    };
 
     $scope.getBands = function(searchTerm) {
       BandSvc.queryAll({ name: searchTerm }, function(results){
@@ -72,7 +71,7 @@ angular.module('embandedApp')
       });
 
       return $scope.foundBands;
-    }
+    };
 
 
     $scope.open = function () {
@@ -84,7 +83,7 @@ angular.module('embandedApp')
       startingDay: 1
     };
 
-    if($scope.currentShow.showDate == null) {
-      $scope.currentShow.showDate = $filter('date')(new Date(), "dd-MMMM-yyyy");
+    if($scope.currentShow.showDate === null) {
+      $scope.currentShow.showDate = $filter('date')(new Date(), 'dd-MMMM-yyyy');
     }
 });

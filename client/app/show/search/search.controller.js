@@ -27,7 +27,7 @@ angular.module('embandedApp')
 
         return searchResults;
       });
-    }
+    };
 
     $scope.getBands = function(searchTerm) {
 
@@ -43,7 +43,7 @@ angular.module('embandedApp')
 
         return searchResults;
       });
-    }
+    };
 
 
     $scope.loadShows = function() {
@@ -51,29 +51,29 @@ angular.module('embandedApp')
         var criteria = {};
 
         if ($scope.venueId) {
-          criteria['venue'] = $scope.venueId;
+          criteria.venue = $scope.venueId;
         }
 
         if ($scope.bandId) {
-          criteria['band'] = $scope.bandId;
+          criteria.band = $scope.bandId;
         }
 
-        if ($scope.selectedBand != null) {
-          criteria['band'] = $scope.selectedBand._id;
+        if ($scope.selectedBand !== null) {
+          criteria.band = $scope.selectedBand._id;
         }
 
-        if ($scope.selectedVenue != null) {
-          criteria['venue'] = $scope.selectedVenue._id;
+        if ($scope.selectedVenue !== null) {
+          criteria.venue = $scope.selectedVenue._id;
         }
         
-        if ($scope.selectedShowDate != null) {
-          criteria['showStartDate'] = $scope.selectedShowDate;
+        if ($scope.selectedShowDate !== null) {
+          criteria.showStartDate = $scope.selectedShowDate;
         }
 
         ShowSvc.queryAll(criteria, function(foundShows){
             $scope.foundShows = foundShows;
         });
-    }
+    };
 
     $scope.loadShows();
     

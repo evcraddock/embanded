@@ -10,8 +10,7 @@ angular.module('embandedApp')
           $scope.foundVenues = foundVenues;
           socket.syncUpdates('venue', $scope.foundVenues);
       });
-
-  	}
+  	};
 
     $scope.findVenues();
   });

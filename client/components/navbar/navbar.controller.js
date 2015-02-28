@@ -18,7 +18,7 @@ angular.module('embandedApp')
     };
 
     $scope.isActive = function(route, useWholePath) {
-      var usePath = useWholePath != undefined ? useWholePath : false;
+      var usePath = useWholePath !== undefined ? useWholePath : false;
 
       var currentPath = $location.path();
 

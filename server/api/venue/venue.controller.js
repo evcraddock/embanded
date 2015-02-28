@@ -7,8 +7,8 @@ var Venue = require('./venue.model');
 exports.index = function(req, res) {
   var params = {};
 
-  if (req.query['name']) {
-    params['name'] = new RegExp(req.query['name'], 'i');
+  if (req.query.name) {
+    params.name = new RegExp(req.query.name, 'i');
   }
 
   var query = Venue.find(params);
@@ -17,10 +17,6 @@ exports.index = function(req, res) {
     return res.json(200, venues);
   });
 
-  // Venue.find(function (err, venues) {
-  //   if(err) { return handleError(res, err); }
-  //   return res.json(200, venues);
-  // });
 };
 
 // Get a single venue

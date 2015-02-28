@@ -6,7 +6,7 @@ describe('Controller: ManageBandCtrl', function () {
   beforeEach(module('embandedApp'));
   beforeEach(module('socketMock'));
 
-  var ViewCtrl, scope, $httpBackend;
+  var ManageBandCtrl, scope, $httpBackend;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
@@ -20,9 +20,5 @@ describe('Controller: ManageBandCtrl', function () {
     });
   }));
 
-  // it('should return current band', function () {
-  //   //$httpBackend.flush();
-
-  //   expect($scope.currentBand.name).to.equal('Test Band');
-  // });
+  
 });

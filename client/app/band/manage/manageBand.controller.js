@@ -16,7 +16,9 @@ angular.module('embandedApp')
     };
 
     $scope.saveBand = function(isValid) {
-      if (!isValid) return;
+      if (!isValid) {
+        return;
+      }
 
       BandSvc.update({ id: $scope.bandId}, { 
         id:     $scope.bandId,
@@ -49,7 +51,7 @@ angular.module('embandedApp')
 
     $scope.cancelSave = function() {
       $scope.switchMode();
-    }
+    };
 
     if (!$scope.currentBand){
   	 $scope.loadBand();

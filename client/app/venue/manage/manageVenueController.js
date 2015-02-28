@@ -16,11 +16,11 @@ angular.module('embandedApp')
     };
 
     $scope.saveVenue = function(isValid) {
-      if (!isValid) return;
+      if (!isValid) {
+        return;
+      }
 
-      var venuePhoneNumber = ($scope.currentVenue.formatedPhoneNumber != undefined)
-        ? $scope.currentVenue.formatedPhoneNumber.replace(/\D+/g, '')
-        : '';
+      var venuePhoneNumber = ($scope.currentVenue.formatedPhoneNumber !== undefined) ? $scope.currentVenue.formatedPhoneNumber.replace(/\D+/g, '') : '';
 
       VenueSvc.update({ id: $scope.venueId}, { 
         id:     $scope.venueId,
@@ -39,16 +39,12 @@ angular.module('embandedApp')
       }, function(venue) {
         $scope.currentVenue = venue;
         $scope.switchMode();
-        //socket.syncUpdates('venue', $scope.currentVenue);
       });
     };
 
   	$scope.loadVenue = function() {
       VenueSvc.getVenue({ id: $scope.venueId }, function(venue){
   			$scope.currentVenue = venue;
-        //$scope.currentVenue.phoneNumber = $scope.currentVenue.formatedPhoneNumber;
-  			//socket.syncUpdates('venue', $scope.currentVenue);
-        //$scope.switchTabs($scope.tab);
   		});
   	};
 
@@ -63,7 +59,7 @@ angular.module('embandedApp')
 
     $scope.cancelSave = function() {
       $scope.switchMode();
-    }
+    };
 
     if (!$scope.currentVenue) {
   	   $scope.loadVenue();

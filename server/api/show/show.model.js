@@ -28,19 +28,13 @@ var ShowSchema = new Schema({
 
 ShowSchema.virtual('venueShowName')
 .get(function() {
-  //var currentName = (this.name != null) ? this.name : bandName + ' show';
-  return (this.name != null) ? this.name : this.bandName + ' show';
+  return (this.name !== null) ? this.name : this.bandName + ' show';
 });
 
 ShowSchema.virtual('bandShowName')
 .get(function() {
-  var currentName = (this.name != null) ? this.name : this.venueName + ' show';
+  var currentName = (this.name !== null) ? this.name : this.venueName + ' show';
   return currentName;
 });
-
-// VenueSchema.virtual('address.location')
-// .get(function() {
-//   return this.address.city + ', ' + this.address.state.abbreviation;
-// });
 
 module.exports = mongoose.model('Show', ShowSchema);

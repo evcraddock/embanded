@@ -10,9 +10,7 @@ angular.module('embandedApp')
           $scope.foundBands = foundBands;
           socket.syncUpdates('band', $scope.foundBands);
       });
-  	}
-
-    
+  	};
 
     $scope.findBands();
   });

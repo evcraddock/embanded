@@ -7,12 +7,12 @@ var Band = require('./band.model');
 exports.index = function(req, res) {
   var params = {};
 
-  if (req.query['active']) {
-    params['active'] = req.query['active'];
+  if (req.query.active) {
+    params.active = req.query.active;
   }
 
-  if (req.query['name']) {
-    params['name'] = new RegExp(req.query['name'], 'i');
+  if (req.query.name) {
+    params.name = new RegExp(req.query.name, 'i');
   }
 
   var query = Band.find(params);

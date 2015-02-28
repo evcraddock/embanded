@@ -9,28 +9,28 @@ exports.index = function(req, res) {
   var params = {};
   var startDateCriteria = {};
 
-  if (req.query['band']) {
-    params['band'] = req.query['band'];
+  if (req.query.band) {
+    params.band = req.query.band;
   }
 
-  if (req.query['venue']) {
-    params['venue'] = req.query['venue'];
+  if (req.query.venue) {
+    params.venue = req.query.venue;
   }
 
   var startShowDate = new Date();
 
-  if (req.query['showStartDate']) {
-    startShowDate = req.query['showStartDate'];
+  if (req.query.showStartDate) {
+    startShowDate = req.query.showStartDate;
   } 
 
-  startDateCriteria['$gte'] = new Date(startShowDate);
+  startDateCriteria.$gte = new Date(startShowDate);
 
-  if (req.query['showEndDate']) {
-    var endShowDate = req.query['showEndDate'];
-    startDateCriteria['$lte'] = new Date(endShowDate);
+  if (req.query.showEndDate) {
+    var endShowDate = req.query.showEndDate;
+    startDateCriteria.$lte = new Date(endShowDate);
   }
 
-  params['showDate'] = startDateCriteria;
+  params.showDate = startDateCriteria;
 
   var query = Show.find(params);
   query.sort({showDate: 'ascending'});

@@ -3,9 +3,6 @@
 angular.module('embandedApp')
   .controller('AdminCtrl', function ($scope, $http, Auth, User, Modal) {
 
-    // Use the User $resource to fetch all users
-    
-
     $scope.delete = Modal.confirm.delete(function(user){
       User.remove({ id: user._id });
       angular.forEach($scope.users, function(u, i) {
@@ -17,16 +14,21 @@ angular.module('embandedApp')
 
     $scope.loadUsers = function() {
       $scope.users = User.query();
-    }
+    };
 
     $scope.changeRole = function(user) {
 
       var role = user.role;
 
-      if (user.role == 'user') role = 'admin';
-      if (user.role == 'admin') role = 'user';
+      if (user.role === 'user') {
+        role = 'admin';
+      }
 
-      Auth.updateRole(user._id, role, function(user) {
+      if (user.role === 'admin') {
+        role = 'user';
+      }
+
+      Auth.updateRole(user._id, role, function() {
         $scope.loadUsers();
       });
 

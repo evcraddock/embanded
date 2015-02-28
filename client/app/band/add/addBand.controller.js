@@ -7,7 +7,9 @@ angular.module('embandedApp')
     $scope.isSaved = false;
 
     $scope.saveBand = function(isValid) {
-      if (!isValid) return;
+      if (!isValid) {
+        return;
+      }
 
       BandSvc.add({ 
         name:     $scope.currentBand.name,
@@ -22,5 +24,6 @@ angular.module('embandedApp')
 
     $scope.cancelSave = function() {
       $location.path('/bands').replace().notify(false);
-    }
+    };
+    
   });

@@ -10,8 +10,6 @@ angular.module('embandedApp')
     $scope.isEditMode = false;
     $scope.isAdmin = Auth.isAdmin();
 
-    //$scope.showDate = new Date();
-    //$scope.showTime = new Date();
     $scope.hstep = 1;
     $scope.mstep = 15;
 
@@ -28,7 +26,7 @@ angular.module('embandedApp')
       });
 
       return $scope.foundVenues;
-    }
+    };
 
     $scope.getBands = function(searchTerm) {
       BandSvc.queryAll({ name: searchTerm }, function(results){
@@ -36,15 +34,12 @@ angular.module('embandedApp')
       });
 
       return $scope.foundBands;
-    }
+    };
 
     $scope.saveShow = function(isValid) {
-      if (!isValid) return;
-
-      // var date = $scope.showDate.split("T");
-      // var time = $scope.showTime.split("T");
-      // var showDateTime = new Date(date[0] + ' ' + time[1]);
-
+      if (!isValid) {
+        return;
+      }
 
       ShowSvc.update({ id: $scope.showId}, { 
         id:     $scope.currentShow.showId,
@@ -54,31 +49,21 @@ angular.module('embandedApp')
         showDate: $scope.currentShow.showDate,
         band: $scope.currentShow.band._id,
         venue: $scope.currentShow.venue._id
-      }, function(show) {
+      }, function() {
         
         $scope.switchMode();
-        //socket.syncUpdates('show', $scope.currentShow);
       });
     };
 
   	$scope.loadShow = function() {
       ShowSvc.getShow({ id: $scope.showId }, function(show){
   			$scope.currentShow = show;
-
-        // var date = $scope.currentShow.showDate.split("T");
-        // var datepart = date[0].split('-');
-        // var timepart = date[1].split(':');
-
-        // $scope.showDate = new Date(datepart[0], datepart[1], datepart[2], timepart[0], timepart[1], 0, 0);
-
-        // $scope.showTime = $scope.showDate;
-        
   		});
   	};
 
     $scope.cancelSave = function() {
       $scope.switchMode();
-    }
+    };
 
     $scope.deleteShow = Modal.confirm.delete(function(showId){
       ShowSvc.remove({
