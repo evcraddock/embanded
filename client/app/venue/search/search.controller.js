@@ -8,7 +8,7 @@ angular.module('embandedApp')
   		
       VenueSvc.queryAll({ name: $scope.searchTerm }, function(foundVenues){
           $scope.foundVenues = foundVenues;
-          socket.syncUpdates('venue', $scope.foundVenues);
+          //socket.syncUpdates('venue', $scope.foundVenues);
       });
   	};
 

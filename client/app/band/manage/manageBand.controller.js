@@ -43,7 +43,7 @@ angular.module('embandedApp')
 
     $scope.deleteBand = Modal.confirm.delete(function(bandId){
       BandSvc.remove({
-        Id: bandId
+        id: bandId
       }, function() {
         $scope.findBands();
       });

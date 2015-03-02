@@ -26,6 +26,9 @@ var VenueSchema = new Schema({
 
 VenueSchema.virtual('formatedPhoneNumber')
 .get(function() {
+	if (!this.phoneNumber) {
+		return '';
+	}
 	return this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
 })
 .set(function(value) {
