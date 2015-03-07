@@ -7,12 +7,17 @@ angular.module('embandedApp')
     $scope.hasCurrentBand = $stateParams.bandId !== undefined;
     $scope.venueId = $stateParams.venueId;
     $scope.hasCurrentVenue = $stateParams.venueId !== undefined;
+    $scope.today = new Date();
+    
 
     $scope.foundVenues = [];
     $scope.foundBands = [];
   	$scope.currentShow = {};
     
     $scope.isSaved = false;
+
+    $scope.hstep = 1;
+    $scope.mstep = 15;
 
     if ($scope.hasCurrentBand) {
       BandSvc.getBand({ id: $scope.bandId }, function(band){
