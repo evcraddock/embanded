@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('VenueSearchCtrl', function ($scope, VenueSvc) {
+  .controller('VenueSearchCtrl', function ($scope, VenueSvc, Auth) {
   	$scope.foundVenues = [];
+    $scope.isAdmin = Auth.isAdmin();
     
 	 $scope.findVenues = function() {
   		
