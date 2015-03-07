@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('ShowSearchCtrl', function ($scope, $http, $stateParams, Auth, socket, BandSvc, VenueSvc, ShowSvc) {
+  .controller('ShowSearchCtrl', function ($scope, $http, $stateParams, Auth, BandSvc, VenueSvc, ShowSvc) {
     $scope.venueId = $stateParams.venueId;
     $scope.bandId = $stateParams.bandId;
     $scope.allowEdit = Auth.isAdmin();

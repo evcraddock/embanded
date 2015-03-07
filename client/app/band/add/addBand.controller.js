@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('AddBandCtrl', function ($scope, $stateParams, $location, socket, BandSvc) {
+  .controller('AddBandCtrl', function ($scope, $stateParams, $location, BandSvc) {
 
   	$scope.currentBand = {};
     $scope.isSaved = false;

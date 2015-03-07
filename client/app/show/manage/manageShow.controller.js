@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('ManageShowCtrl', function ($scope, $stateParams, $location, Auth, socket, Modal, ShowSvc, VenueSvc, BandSvc) {
+  .controller('ManageShowCtrl', function ($scope, $stateParams, $location, Auth, Modal, ShowSvc, VenueSvc, BandSvc) {
   	$scope.showId = $stateParams.showId;
     $scope.bandId = $stateParams.bandId;
     $scope.venueId = $stateParams.venueId;

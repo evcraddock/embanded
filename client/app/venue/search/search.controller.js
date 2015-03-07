@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('VenueSearchCtrl', function ($scope, socket, VenueSvc) {
+  .controller('VenueSearchCtrl', function ($scope, VenueSvc) {
   	$scope.foundVenues = [];
     
 	 $scope.findVenues = function() {

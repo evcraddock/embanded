@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('BandSearchCtrl', function ($scope, $http, Auth, socket, BandSvc) {
+  .controller('BandSearchCtrl', function ($scope, $http, Auth, BandSvc) {
   	$scope.foundBands = [];
     $scope.isAdmin = Auth.isAdmin();
 
 	 $scope.findBands = function() {
   		BandSvc.queryAll({ name: $scope.searchTerm }, function(foundBands){
           $scope.foundBands = foundBands;
-          socket.syncUpdates('band', $scope.foundBands);
+          //socket.syncUpdates('band', $scope.foundBands);
       });
   	};
 

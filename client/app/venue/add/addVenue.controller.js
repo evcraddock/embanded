@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('AddVenueCtrl', function ($scope, $stateParams, $location, socket, VenueSvc) {
+  .controller('AddVenueCtrl', function ($scope, $stateParams, $location, VenueSvc) {
 
   	$scope.currentVenue = {};
     $scope.isSaved = false;

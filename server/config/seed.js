@@ -38,20 +38,20 @@ var Show = require('../api/show/show.model');
 
 // Show.find({}).remove();
 
-User.find({}).remove(function() {
-  User.create({
-    provider: 'local',
-    name: 'Test User',
-    email: 'test@test.com',
-    password: 'test'
-  }, {
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
-  }, function() {
-      console.log('finished populating users');
-    }
-  );
-});
+// User.find({}).remove(function() {
+//   User.create({
+//     provider: 'local',
+//     name: 'Test User',
+//     email: 'test@test.com',
+//     password: 'test'
+//   }, {
+//     provider: 'local',
+//     role: 'admin',
+//     name: 'Admin',
+//     email: 'admin@admin.com',
+//     password: 'admin'
+//   }, function() {
+//       console.log('finished populating users');
+//     }
+//   );
+// });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('ManageVenueCtrl', function ($scope, $stateParams, Auth, Modal, socket, VenueSvc) {
+  .controller('ManageVenueCtrl', function ($scope, $stateParams, Auth, Modal, VenueSvc) {
   	$scope.venueId = $stateParams.venueId;
     $scope.isViewMode = true;
     $scope.isEditMode = false;

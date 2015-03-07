@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('AddShowCtrl', function ($scope, $stateParams, $location, $filter, socket, ShowSvc, VenueSvc, BandSvc) {
+  .controller('AddShowCtrl', function ($scope, $stateParams, $location, $filter, ShowSvc, VenueSvc, BandSvc) {
 
     $scope.bandId = $stateParams.bandId;
     $scope.hasCurrentBand = $stateParams.bandId !== undefined;

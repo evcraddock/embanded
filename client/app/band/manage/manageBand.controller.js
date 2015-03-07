@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('ManageBandCtrl', function ($scope, $stateParams, $location, Auth, Modal, socket, BandSvc) {
+  .controller('ManageBandCtrl', function ($scope, $stateParams, $location, Auth, Modal, BandSvc) {
   	$scope.bandId = $stateParams.bandId;
     $scope.isViewMode = true;
     $scope.isEditMode = false;

@@ -76,19 +76,20 @@ UserSchema
   }, 'Password cannot be blank');
 
 // Validate email is not taken
-UserSchema
-  .path('email')
-  .validate(function(value, respond) {
-    var self = this;
-    this.constructor.findOne({email: value}, function(err, user) {
-      if(err) throw err;
-      if(user) {
-        if(self.id === user.id) return respond(true);
-        return respond(false);
-      }
-      respond(true);
-    });
-}, 'The specified email address is already in use.');
+// UserSchema
+//   .path('email')
+//   .validate(function(value, respond) {
+//     var self = this;
+//     this.constructor.findOne({email: value}, function(err, user) {
+//       if(err) throw err;
+//       if(user) {
+//         if(self.id === user.id) return respond(true);
+//         //  throw err;
+//         return respond(false);
+//       }
+//       respond(true);
+//     });
+// }, 'The specified email address is already in use.');
 
 var validatePresenceOf = function(value) {
   return value && value.length;
@@ -119,6 +120,7 @@ UserSchema.methods = {
    * @api public
    */
   authenticate: function(plainText) {
+    
     return this.encryptPassword(plainText) === this.hashedPassword;
   },
 
