@@ -11,7 +11,7 @@ angular.module('embandedApp')
     $scope.foundVenues = [];
     $scope.foundBands = [];
   	$scope.currentShow = {};
-
+    
     $scope.isSaved = false;
 
     if ($scope.hasCurrentBand) {
@@ -30,8 +30,6 @@ angular.module('embandedApp')
       if (!isValid) {
         return;
       }
-
-
 
       ShowSvc.add({ 
         name: $scope.currentShow.name,
@@ -85,7 +83,5 @@ angular.module('embandedApp')
       startingDay: 1
     };
 
-    if($scope.currentShow.showDate === null) {
-      $scope.currentShow.showDate = $filter('date')(new Date(), 'dd-MMMM-yyyy');
-    }
+
 });

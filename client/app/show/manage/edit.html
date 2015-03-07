@@ -31,8 +31,11 @@
           <div style="display:inline-block; min-height:290px;">
             <datepicker ng-model="currentShow.showDate" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
 
+            <div ng-show="currentShow.showDate">
+
             <label for="showTime">Show Time</label>
             <timepicker id="showTime" ng-model="currentShow.showDate" hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+            </div>
           </div>
         </div>
       </div>

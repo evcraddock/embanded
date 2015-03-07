@@ -9,7 +9,7 @@ angular.module('embandedApp')
     $scope.isViewMode = true;
     $scope.isEditMode = false;
     $scope.isAdmin = Auth.isAdmin();
-
+    
     $scope.hstep = 1;
     $scope.mstep = 15;
 
@@ -57,6 +57,11 @@ angular.module('embandedApp')
 
   	$scope.loadShow = function() {
       ShowSvc.getShow({ id: $scope.showId }, function(show){
+
+        if (show.name === undefined) {
+          show.name = show.bandName + ' @ ' + show.venueName;
+        }
+
   			$scope.currentShow = show;
   		});
   	};
