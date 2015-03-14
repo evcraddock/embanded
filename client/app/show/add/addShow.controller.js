@@ -7,8 +7,6 @@ angular.module('embandedApp')
     $scope.hasCurrentBand = $stateParams.bandId !== undefined;
     $scope.venueId = $stateParams.venueId;
     $scope.hasCurrentVenue = $stateParams.venueId !== undefined;
-    $scope.today = new Date();
-    
 
     $scope.foundVenues = [];
     $scope.foundBands = [];
@@ -49,7 +47,7 @@ angular.module('embandedApp')
           zipCode: $scope.currentShow.venue.address.zipCode,
           streetAddress: $scope.currentShow.venue.address.streetAddress
         },
-        showDate: ($scope.currentShow.showDate === null) ? $scope.currentShow.showDate : new Date(),
+        showDate: ($scope.currentShow.showDate !== null) ? $scope.currentShow.showDate : new Date(),
         band: $scope.currentShow.band._id,
         venue: $scope.currentShow.venue._id
       }, function(show) {

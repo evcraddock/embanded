@@ -13,6 +13,9 @@ angular.module('embandedApp')
     $scope.foundShows = [];
     $scope.searchCritera = {};
     $scope.searchIsCollapsed = true;
+    $scope.totalItems = 0;
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = 5;
 
     $scope.getVenues = function(searchTerm) {
       return $http({
@@ -45,6 +48,13 @@ angular.module('embandedApp')
       });
     };
 
+    $scope.changePage = function(pageNumber) {
+      $scope.currentPage = pageNumber;
+    }
+
+    $scope.pageChanged = function() {
+      $scope.loadShows();
+    }
 
     $scope.loadShows = function() {
 
@@ -71,7 +81,12 @@ angular.module('embandedApp')
         }
 
         ShowSvc.queryAll(criteria, function(foundShows){
-            $scope.foundShows = foundShows;
+            $scope.totalItems = foundShows.length;
+            var start = ($scope.currentPage - 1) * $scope.itemsPerPage;
+            var end = ($scope.itemsPerPage <= $scope.totalItems) ? start + $scope.itemsPerPage : $scope.totalItems;
+
+            var displayedShows = foundShows.slice(start, end);
+            $scope.foundShows = displayedShows;
         });
     };
 
