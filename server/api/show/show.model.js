@@ -7,15 +7,16 @@ var ShowSchema = new Schema({
   name: String,
   bandName: String,
   venueName: String,
-  VenueAddress: {
-  	city: String,
-  	state: {
-  		name: String,
-  		abbreviation: String
-  	},
-  	zipCode: String,
-  	streetAddress: String
-  },
+  metroArea: String,
+  // VenueAddress: {
+  // 	city: String,
+  // 	state: {
+  // 		name: String,
+  // 		abbreviation: String
+  // 	},
+  // 	zipCode: String,
+  // 	streetAddress: String
+  // },
   showDate: { type: Date },
   band: { type: Schema.Types.ObjectId, ref: 'Band' },
   venue: { type: Schema.Types.ObjectId, ref: 'Venue' },

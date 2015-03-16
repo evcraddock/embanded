@@ -34,6 +34,16 @@
 	      </div>
 	    </div>
 	    <div class="row">
+	    	<div class="col-md-3 form-group">
+		    	<label for="latitude">Latitude</label>
+		    	<input type="text" id="latitude" class="form-control" ng-model="currentVenue.address.coordinates.latitude"/>
+	    	</div>
+	    	<div class="col-md-3 form-group">
+		    	<label for="longitude">Longitude</label>
+		    	<input type="text" id="longitude" class="form-control" ng-model="currentVenue.address.coordinates.longitude"/>
+	    	</div>
+	    </div>
+	    <div class="row">
 	      <div class="col-md-6 form-group">
 	        <label for="website">Website</label>
 	        <span ng-if="venueForm.website.$invalid">*</span>

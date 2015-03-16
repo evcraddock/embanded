@@ -38,15 +38,16 @@ angular.module('embandedApp')
         name: $scope.currentShow.name,
         bandName:     $scope.currentShow.band.name,
         venueName:    $scope.currentShow.venue.name,
-        venueAddress: {
-          city: $scope.currentShow.venue.address.city,
-          state: {
-            name: $scope.currentShow.venue.address.state.name,
-            abbreviation: $scope.currentShow.venue.address.state.abbreviation
-          },
-          zipCode: $scope.currentShow.venue.address.zipCode,
-          streetAddress: $scope.currentShow.venue.address.streetAddress
-        },
+        // venueAddress: {
+        //   city: $scope.currentShow.venue.address.city,
+        //   state: {
+        //     name: $scope.currentShow.venue.address.state.name,
+        //     abbreviation: $scope.currentShow.venue.address.state.abbreviation
+        //   },
+        //   zipCode: $scope.currentShow.venue.address.zipCode,
+        //   streetAddress: $scope.currentShow.venue.address.streetAddress,
+          
+        // },
         showDate: ($scope.currentShow.showDate !== null) ? $scope.currentShow.showDate : new Date(),
         band: $scope.currentShow.band._id,
         venue: $scope.currentShow.venue._id

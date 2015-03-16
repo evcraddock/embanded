@@ -1,3 +1,4 @@
+
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
@@ -10,12 +11,18 @@
    				<div class="col-md-3">
 					<div ng-include="'app/show/manage/view.html'"></div>
 				</div>
+				<div class="col-md-9">
+					<ui-gmap-google-map center="map.center" zoom="map.zoom">
+						<ui-gmap-markers models="markers" coords="'coords'"></ui-gmap-markers>
+					</ui-gmap-google-map>
+				</div>
 			</div>
 			<div class="row" ng-if="isEditMode">
 				<div class="col-md-12">
 					<div ng-include="'app/show/manage/edit.html'"></div>
 				</div>
 			</div>
+
 		</div>
 
 	</div>

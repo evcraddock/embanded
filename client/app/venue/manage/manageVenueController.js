@@ -34,7 +34,11 @@ angular.module('embandedApp')
             abbreviation: $scope.currentVenue.address.state.abbreviation
           },
           zipCode: $scope.currentVenue.address.zipCode,
-          streetAddress: $scope.currentVenue.address.streetAddress
+          streetAddress: $scope.currentVenue.address.streetAddress,
+          coordinates: {
+            latitude: $scope.currentVenue.address.coordinates.latitude,
+            longitude: $scope.currentVenue.address.coordinates.longitude
+          }
         }
       }, function(venue) {
         $scope.currentVenue = venue;

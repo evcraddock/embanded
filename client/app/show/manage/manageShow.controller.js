@@ -63,8 +63,40 @@ angular.module('embandedApp')
         }
 
   			$scope.currentShow = show;
+
+        if ($scope.currentShow.venue.address.coordinates) {
+          $scope.map = {
+            center: {
+              latitude: $scope.currentShow.venue.address.coordinates.latitude, 
+              longitude: $scope.currentShow.venue.address.coordinates.longitude 
+            }, 
+
+            zoom: 14 
+          };
+
+          $scope.markers = [{
+              id: $scope.currentShow.name,
+              coords: {
+                latitude: $scope.currentShow.venue.address.coordinates.latitude, 
+                longitude: $scope.currentShow.venue.address.coordinates.longitude 
+              }
+            }
+          ];
+      }
+
   		});
   	};
+    
+    
+    // uiGmapGoogleMapApi.then(function(maps) {
+    //   $scope.map = { 
+    //     center: { latitude: 45, longitude: -73 }, zoom: 8 
+    //   };
+
+
+    // });
+
+    
 
     $scope.cancelSave = function() {
       $scope.switchMode();

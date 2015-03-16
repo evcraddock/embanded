@@ -12,7 +12,11 @@ var VenueSchema = new Schema({
 			abbreviation: String
 		},
 		zipCode: String,
-		streetAddress: String
+		streetAddress: String,
+		coordinates: {
+			latitude: Number,
+			longitude: Number
+		}
 	},
 	phoneNumber: String,
 	website: String,
