@@ -2,6 +2,11 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
+		<script type="text/ng-template" id="markerText.tpl.html">
+			testing
+	        <a ng-href="/venues/{{currentShow.venue._id}}">{{currentShow.venue.name}}</a> 
+			{{currentShow.venue.address.state}}
+	    </script>
 		<div class="panel panel-default">
    		<div class="panel-heading">
    			<h2> {{currentShow.name}}</h2>
@@ -12,8 +17,18 @@
 					<div ng-include="'app/show/manage/view.html'"></div>
 				</div>
 				<div class="col-md-9">
-					<ui-gmap-google-map center="map.center" zoom="map.zoom">
-						<ui-gmap-markers models="markers" coords="'coords'"></ui-gmap-markers>
+					<ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
+						<ui-gmap-marker coords="showLocation.coords" idkey="showLocation.id">
+							<ui-gmap-window show="showLocation.isVisible">
+								<span>
+									<a ng-href="/venues/{{currentShow.venue._id}}">{{currentShow.venue.name}}</a> <br/> 
+
+									<a href="https://maps.google.com/?daddr={{currentShow.venue.address.coordinates.latitude}},{{currentShow.venue.address.coordinates.longitude}}" target="_new">Get Directions</a>
+								</span>
+								
+							</ui-gmap-window>
+
+						</ui-gmap-marker>
 					</ui-gmap-google-map>
 				</div>
 			</div>

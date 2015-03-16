@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('embandedApp')
-  .controller('ManageShowCtrl', function ($scope, $stateParams, $location, Auth, Modal, ShowSvc, VenueSvc, BandSvc) {
+  .controller('ManageShowCtrl', function ($scope, $stateParams, $location, Auth, Modal, ShowSvc, VenueSvc, BandSvc, uiGmapGoogleMapApi) {
   	$scope.showId = $stateParams.showId;
     $scope.bandId = $stateParams.bandId;
     $scope.venueId = $stateParams.venueId;
@@ -64,6 +64,8 @@ angular.module('embandedApp')
 
   			$scope.currentShow = show;
 
+        $scope.isMarkerWindowVisible = false;
+
         if ($scope.currentShow.venue.address.coordinates) {
           $scope.map = {
             center: {
@@ -74,27 +76,48 @@ angular.module('embandedApp')
             zoom: 14 
           };
 
-          $scope.markers = [{
-              id: $scope.currentShow.name,
-              coords: {
-                latitude: $scope.currentShow.venue.address.coordinates.latitude, 
-                longitude: $scope.currentShow.venue.address.coordinates.longitude 
-              }
-            }
-          ];
-      }
+          $scope.showLocation = {
+            id: $scope.currentShow.name,
+            coords: {
+              latitude: $scope.currentShow.venue.address.coordinates.latitude, 
+              longitude: $scope.currentShow.venue.address.coordinates.longitude 
+            },
+            isVisible: false,
+            message: 'This is a test message \n more text'
+          };
+
+          // $scope.showLocations = [{
+          //     id: $scope.currentShow.name,
+          //     coords: {
+          //       latitude: $scope.currentShow.venue.address.coordinates.latitude, 
+          //       longitude: $scope.currentShow.venue.address.coordinates.longitude 
+          //     },
+          //     isVisible: false,
+          //     message: 'This is a test message'
+          //   }
+          // ];
+        }
 
   		});
   	};
-    
-    
-    // uiGmapGoogleMapApi.then(function(maps) {
-    //   $scope.map = { 
-    //     center: { latitude: 45, longitude: -73 }, zoom: 8 
-    //   };
+
+    $scope.onMarkerClick = function() {
+        $scope.isMarkerWindowVisible = !$scope.isMarkerWindowVisible;
+    };
+
+    $scope.options = {scrollwheel: true};
+
+    uiGmapGoogleMapApi.then(function(maps) {
+      // $scope.map = { 
+      //   center: { latitude: 45, longitude: -73 }, zoom: 8 
+      // };
+
+      if (!$scope.currentShow){
+       $scope.loadShow();
+      }
 
 
-    // });
+    });
 
     
 
@@ -111,9 +134,7 @@ angular.module('embandedApp')
       });
     });
 
-    if (!$scope.currentShow){
-  	 $scope.loadShow();
-    }
+    
 
     $scope.open = function () {
         $scope.isDateOpen = true;

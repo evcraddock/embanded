@@ -11,9 +11,12 @@
 	   			<div class="col-md-3">
 	   				<div class="well well-sm">
 	   				   	<address>
-	   				   		<strong>{{currentVenue.name}}</strong><br/>
+	   				   		<strong>{{currentVenue.name}}</strong>
+   				   			<small ng-show="currentVenue.address.coordinates"> - <a href="https://maps.google.com/?daddr={{currentVenue.address.coordinates.latitude}},{{currentVenue.address.coordinates.longitude}}" target="_new">directions</a></small>
+	   				   		<br/>
 	   						{{currentVenue.address.streetAddress}} <br/>
 	   						{{currentVenue.address.location}} {{currentVenue.address.zipCode}} <br/>
+
 	   						<span ng-if="currentVenue.phoneNumber"><abbr title="Phone Number">Phone:</abbr> {{currentVenue.formatedPhoneNumber}} <br/></span>
 	   						<span ng-if="currentVenue.website"><abbr title="Website">Web:</abbr> <a ng-show="currentVenue.website" target="_new" href="{{currentVenue.website}}">{{currentVenue.website}}</a></span>
 	   				   	</address>
