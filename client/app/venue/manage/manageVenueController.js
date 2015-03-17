@@ -55,9 +55,9 @@ angular.module('embandedApp')
     $scope.deleteVenue = Modal.confirm.delete(function(venueId){
 
       VenueSvc.remove({
-        Id: venueId
+        id: venueId
       }, function() {
-        $scope.findVenues();
+        $location.path('/venues').replace().notify(false);
       });
     });
 

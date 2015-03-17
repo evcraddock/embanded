@@ -50,11 +50,11 @@ angular.module('embandedApp')
 
     $scope.changePage = function(pageNumber) {
       $scope.currentPage = pageNumber;
-    }
+    };
 
     $scope.pageChanged = function() {
       $scope.loadShows();
-    }
+    };
 
     $scope.loadShows = function() {
 

@@ -12,6 +12,8 @@ angular.module('embandedApp')
       }
 
       var venuePhoneNumber = ($scope.currentVenue.formatedPhoneNumber !== undefined) ? $scope.currentVenue.formatedPhoneNumber.replace(/\D+/g, '') : '';
+      var latitude = ($scope.currentVenue.address.coordinates) ? $scope.currentVenue.address.coordinates.latitude : undefined;
+      var longitude = ($scope.currentVenue.address.coordinates) ? $scope.currentVenue.address.coordinates.longitude : undefined;
 
       VenueSvc.add({ 
         name:     $scope.currentVenue.name,
@@ -26,8 +28,8 @@ angular.module('embandedApp')
           zipCode: $scope.currentVenue.address.zipCode,
           streetAddress: $scope.currentVenue.address.streetAddress,
           coordinates: {
-            latitude: $scope.currentVenue.address.coordinates.latitude,
-            longitude: $scope.currentVenue.address.coordinates.longitude
+            latitude: latitude,
+            longitude: longitude
           }
 
         }

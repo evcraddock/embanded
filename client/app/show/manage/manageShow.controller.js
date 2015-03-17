@@ -77,49 +77,25 @@ angular.module('embandedApp')
           };
 
           $scope.showLocation = {
-            id: $scope.currentShow.name,
+            id: $scope.currentShow._id,
             coords: {
               latitude: $scope.currentShow.venue.address.coordinates.latitude, 
               longitude: $scope.currentShow.venue.address.coordinates.longitude 
             },
-            isVisible: false,
-            message: 'This is a test message \n more text'
+            isVisible: false
           };
-
-          // $scope.showLocations = [{
-          //     id: $scope.currentShow.name,
-          //     coords: {
-          //       latitude: $scope.currentShow.venue.address.coordinates.latitude, 
-          //       longitude: $scope.currentShow.venue.address.coordinates.longitude 
-          //     },
-          //     isVisible: false,
-          //     message: 'This is a test message'
-          //   }
-          // ];
         }
 
   		});
   	};
 
-    $scope.onMarkerClick = function() {
-        $scope.isMarkerWindowVisible = !$scope.isMarkerWindowVisible;
-    };
-
     $scope.options = {scrollwheel: true};
 
-    uiGmapGoogleMapApi.then(function(maps) {
-      // $scope.map = { 
-      //   center: { latitude: 45, longitude: -73 }, zoom: 8 
-      // };
-
+    uiGmapGoogleMapApi.then(function() {
       if (!$scope.currentShow){
        $scope.loadShow();
       }
-
-
     });
-
-    
 
     $scope.cancelSave = function() {
       $scope.switchMode();
@@ -133,8 +109,6 @@ angular.module('embandedApp')
         $location.path('/').replace().notify(false);
       });
     });
-
-    
 
     $scope.open = function () {
         $scope.isDateOpen = true;
